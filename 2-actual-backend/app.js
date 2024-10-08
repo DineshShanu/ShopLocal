@@ -4,8 +4,7 @@ const bodyParser = require('body-parser');
 const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
-const express = require("express"); 
-app.get("/", (req, res) => { res.send("Express on Vercel"); }); const PORT = process.env.PORT || 5000; app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`); });
+const PORT = 4000;
 
 app.use(bodyParser.json());
 
@@ -41,3 +40,12 @@ app.post('/items', async (req, res) => {
 });
 
 //app.listen(8080);
+app.get('/home', (req, res) => {
+  res.status(200).json('Welcome, your app is working well');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+
+module.exports = app;
