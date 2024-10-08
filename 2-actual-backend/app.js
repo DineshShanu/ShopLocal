@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
+const express = require("express"); 
+app.get("/", (req, res) => { res.send("Express on Vercel"); }); const PORT = process.env.PORT || 5000; app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`); });
 
 app.use(bodyParser.json());
 
@@ -38,4 +40,4 @@ app.post('/items', async (req, res) => {
   res.status(201).json({ message: 'Stored new item.', item: newItem });
 });
 
-//app.listen(8080);
+app.listen(8080);
