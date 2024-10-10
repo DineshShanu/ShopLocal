@@ -26,17 +26,10 @@ async function getStoredItems() {
   return storedItems;
 }
 
-function storeItems(items) {
-  return fs.writeFile('items.json', JSON.stringify({ items: items || [] }));
-}
-
-exports.getStoredItems = getStoredItems;
-exports.storeItems = storeItems;
-
 app.get('/items', async (req, res) => {
     const storedItems = await getStoredItems();
-    await new Promise((resolve, reject) => setTimeout(() => resolve(), 2000));
-    res.json({ items: storedItems });
+    //await new Promise((resolve, reject) => setTimeout(() => resolve(), 2000));
+    res.status(200).json({ items: storedItems });
   });
 //
 
