@@ -24,19 +24,6 @@ app.get('/items', async (req, res) => {
     res.json({ items: storedItems });
 });
 
-app.post('/items', async (req, res) => {
-    const existingItems = await getStoredItems();
-    const itemData = req.body;
-    const newItem = {
-        ...itemData,
-        id: Math.random().toString(),
-    };
-    const updatedItems = [newItem, ...existingItems];
-    await storeItems(updatedItems);
-    res.status(201).json({ message: 'Stored new item.', item: newItem });
-});
-
-
 // connection
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Listening to port ${port}`));
